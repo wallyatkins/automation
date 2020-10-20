@@ -12,4 +12,4 @@ jobs:
       with:
         secret: ${{ secrets.LINE_CHANNEL_SECRET }}
         token: ${{ secrets.LINE_CHANNEL_TOKEN }}
-        args: line message from GitHub Actions ${{on.rss.outputs.title}}
+        message: line message from GitHub Actions - ${{on.rss.outputs.title}}
