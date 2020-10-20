@@ -2,16 +2,14 @@ on:
   rss:
     url: https://hnrss.org/newest?points=300&count=3
 jobs:
-  print:
-    name: Print
+  build:
+    name: send rss message
     runs-on: ubuntu-latest
     steps:
-      - name: Print Outputs
-        env:
-          title: ${{on.rss.outputs.title}}
-          contentSnippet: ${{on.rss.outputs.contentSnippet}}
-          link: ${{on.rss.outputs.link}}
-        run: |
-          echo title: $title
-          echo contentSnippet: $contentSnippet
-          echo link: $link
+    - uses: actions/checkout@master
+    - name: send custom message with args
+      uses: appleboy/line-action@master
+      with:
+        secret: ${{ secrets.LINE_CHANNEL_SECRET }}
+        token: ${{ secrets.LINE_CHANNEL_TOKEN }}
+        args: line message from GitHub Actions ${{on.rss.outputs.title}}
