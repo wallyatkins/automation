@@ -12,4 +12,5 @@ jobs:
       with:
         secret: ${{ secrets.LINE_CHANNEL_SECRET }}
         token: ${{ secrets.LINE_CHANNEL_TOKEN }}
+        group: ${{ secrets.LINE_GROUP_ID }}
         message: line message from GitHub Actions - ${{on.rss.outputs.title}}
